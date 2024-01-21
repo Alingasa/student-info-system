@@ -51,7 +51,9 @@ class User extends Authenticatable
     protected $appends = [
         'full_name',
     ];
-
+    /**
+    * Wala lang
+    */
     public function getFullNameAttribute(): string
     {
         return ucwords($this->firstname) . ' ' . ucwords($this->lastname);
