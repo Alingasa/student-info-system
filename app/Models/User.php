@@ -60,7 +60,7 @@ class User extends Authenticatable
     */
     public function getFullNameAttribute(): string
     {
-        return ucwords($this->firstname) . ' ' . ucwords($this->lastname);
+        return $this->firstname . ' ' . $this->lastname;
     }
 
     public function getAgeAttribute()
