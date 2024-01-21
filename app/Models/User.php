@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -26,6 +28,7 @@ class User extends Authenticatable
         'email',
         'status',
         'password',
+        'birthdate'
     ];
 
     /**
@@ -50,6 +53,7 @@ class User extends Authenticatable
 
     protected $appends = [
         'full_name',
+        'age',
     ];
     /**
     * Wala lang
@@ -57,6 +61,14 @@ class User extends Authenticatable
     public function getFullNameAttribute(): string
     {
         return ucwords($this->firstname) . ' ' . ucwords($this->lastname);
+    }
+
+    public function getAgeAttribute()
+    {
+        if(!empty($this->birthdate)) {
+            return Carbon::parse($this->birthdate)->age;
+        }
+        return null;
     }
 
 
