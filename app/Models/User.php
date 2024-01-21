@@ -50,17 +50,11 @@ class User extends Authenticatable
 
     protected $appends = [
         'full_name',
-        'test',
     ];
 
     public function getFullNameAttribute(): string
     {
         return ucwords($this->firstname) . ' ' . ucwords($this->lastname);
-    }
-
-    public function getTestAttribute(): string
-    {
-        return $this->lastname . ', ' . $this->firstname;
     }
 
 
