@@ -81,7 +81,7 @@ class AdminController extends Controller
 public function update(Request $request, User $Admin): RedirectResponse
 {
   
-    $request->validate([
+    $data = $request->validate([
         'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         'role' => 'required',
         'user_id' => ['required', 'numeric'],
@@ -91,6 +91,8 @@ public function update(Request $request, User $Admin): RedirectResponse
         'status' => 'required',
         'password' => ['required', 'string', 'min:8', 'confirmed'],
     ]);
+
+    // dd($data);
 
     // Update other fields
 
@@ -102,15 +104,18 @@ public function update(Request $request, User $Admin): RedirectResponse
         }
 
         $avatar = $request->file('avatar');
+        // dd($avatar);
         $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
-        $Admin->avatar = $avatarPath;
+        $data['avatar'] = $avatarPath;
     } else {
         // No file provided, set avatar to null
-        $Admin->avatar = null;
+        $data['avatar'] = null;
     }
-
-    $Admin->save();
-
+    // dd($data);
+    // dd($Admin);
+    $Admin->update($data);
+    // $Admin->save();
+    
 
     return redirect()->route('admin.index')->with('success', 'User updated successfully');
 }

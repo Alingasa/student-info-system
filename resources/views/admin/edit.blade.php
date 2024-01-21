@@ -37,12 +37,11 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong for="role">Role</strong>
-                
                 <select  class="form-control" name="role" id="role">
 
-                    <option value="Admin">Admin</option>
-                    <option value="Student">Student</option>
-                   <option value="Teacher">Teacher</option>
+                    <option value="Admin" {{ ($Admin->role == "Admin") ? 'selected' : ''}}>Admin</option>
+                    <option value="Student" {{ ($Admin->role == "Student") ? 'selected' : ''}}>Student</option>
+                   <option value="Teacher" {{ ($Admin->role == "Teacher") ? 'selected' : ''}}>Teacher</option>
                 
                     
                     </select>
