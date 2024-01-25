@@ -4,6 +4,7 @@
 
            <div class="card">
             <div class="card-header">
+                
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <i class="material-symbols-outlined">
@@ -19,6 +20,7 @@
                 </div>
             </div>
             <div class="card-body p-0">
+              
                 <table class="table table-sm table-hover table-striped mb-0" id="myDataTable">
                    
                   @if ($message = Session::get('success'))
@@ -38,7 +40,7 @@
                           @endif
                           <th>Name</th>
                           <th>Description</th>
-                          <th>Duration</th>
+                    
                           @if(auth()->user()['role'] == 'Admin' || auth()->user()['role'] == 'Teacher')
                           <th width="280px">Action</th>
                           @endif
@@ -63,7 +65,6 @@
                         
                             <td>{{ $courses->description }}</td>
                        
-                          <td>{{ $courses->duration() }}</td>
                           @if(auth()->user()['role'] == 'Admin' || auth()->user()['role'] == 'Teacher')
                           <td>
                               <form action="{{ route('course.destroy',$courses->id) }}" method="POST">

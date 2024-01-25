@@ -3,7 +3,7 @@
  
   <div class="card shadow mb-4">
       <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-danger">Enrolled</h6>
+          <h6 class="m-0 font-weight-bold text-danger">Subject Enrolled Details</h6>
       </div>
       <div class="card-body">
           <div class="table-responsive">
@@ -12,9 +12,9 @@
                    
                     <div class="col-sm-12 col-md-6">
                         <div id="dataTable_filter" class="dataTables_filter">
-                            @if (count($enrollments) > 10)
+                        
                         <input type="text" id="searchBar" class="form-control" style="width: 250px" placeholder="Search">
-                    @endif
+                   
                         </div>
                         <br>
                     </div>
@@ -24,7 +24,7 @@
                         <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                   <thead>
                       <tr role="row">
-                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 195.2px;">Enrollment Id</th>
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 195.2px;">Student ID</th>
                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 296.2px;">Full Name</th>
                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 141.2px;">Course</th>
                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 141.2px;">Subject Enrolled</th>

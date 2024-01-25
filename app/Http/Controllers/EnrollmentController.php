@@ -46,7 +46,7 @@ class EnrollmentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'enrollment_no' => 'required|unique:enrollments',
+        
             'subject_id' => 'required',
             'course_id' => 'required',
             'student_id' => 'required|unique:enrollments',
@@ -90,7 +90,7 @@ class EnrollmentController extends Controller
     public function update(Request $request, Enrollment $enrollment): RedirectResponse
     {
         $request->validate([
-            'enrollment_no' => 'required',
+          
             'subject_id' => 'required',
             'course_id' => 'required',
             'student_id' => 'required',

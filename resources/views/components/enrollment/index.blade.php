@@ -34,7 +34,7 @@
                   <table class="table table-bordered">
                       <tr>
                           <th>No</th>
-                          <th>Enrollment No</th>
+                   
                           <th>Subject</th>
                           <th>Course</th>
                           <th>Student</th>
@@ -47,7 +47,7 @@
                       <tr class="user-row">
                           <td>{{ ++$i }}</td>
                           <!-- Other enrollment fields -->
-                          <td>{{ $enrollment->enrollment_no }}</td>
+                     
                           <td>{{ $enrollment->subject->name }}</td>
                           <td>{{ $enrollment->course->name }}</td>
                           <td>{{ $enrollment->student->firstname }} {{ $enrollment->student->lastname }}</td>

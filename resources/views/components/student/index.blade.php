@@ -4,6 +4,7 @@
 
            <div class="card">
             <div class="card-header">
+            
                 <div class="row">
                   @if(auth()->user()['role'] == 'Admin' || auth()->user()['role'] == 'Teacher')
                     <div class="col-md-6 col-12">
@@ -22,6 +23,7 @@
                  
                 </div>
             </div>
+            <div class="table-responsive">
             <div class="card-body p-0">
                 <table classs="table table-sm table-hover table-striped mb-0" id="myDataTable">
                    

@@ -29,13 +29,7 @@ class LayoutController extends Controller
             // dd($totalPayments);
             $studenttables = Student::latest()->paginate(50);
             $enrollments = Enrollment::with(['subject', 'course', 'student', 'teacher'])->get();
-           if(Auth::user()->role == "Teacher")
-           {
-            return view('dashboard.teacherdashboard.teacher_dashboard',compact('totalStudents','totalUsers','totalTeachers','studenttables'));
-           }  elseif(Auth::user()->role == "Student")
-           {
-            return view('dashboard.studentdashboard.student_dashboard',compact('totalStudents','totalUsers','totalTeachers','studenttables'));
-           }
+     
         }
 
       

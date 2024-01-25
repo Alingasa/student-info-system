@@ -58,7 +58,7 @@
         <span>Users</span></a>
 </li>
 @endif
-
+{{-- 
 @if(auth()->user()['role'] == 'Student')
 <li class="nav-item">
     <a class="nav-link" href="#"data-toggle="modal" data-target="#profileModal">
@@ -68,7 +68,7 @@
         <span>Profile</span></a>
        
 </li>
-@endif
+@endif --}}
 
 <li class="nav-item">
     <a class="nav-link" href="{{ route('course.index')}}">

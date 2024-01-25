@@ -28,7 +28,7 @@
 <div class="form-group">
     <strong>Choose Avatar</strong>
     <br>
-    <input type="file" name="avatar" class="form-control-file">
+    <input type="file" name="avatar" class="form-control-file" >
 
  
         </div>

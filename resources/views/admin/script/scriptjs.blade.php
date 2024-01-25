@@ -3,12 +3,7 @@
     $(document).ready(function () {
         // Toggle search bar visibility based on user count
         var userCount = {{ count($Admin) }};
-        if (userCount > 10) {
-            $('#searchBar').show();
-        } else {
-            $('#searchBar').hide();
-        }
-
+      
         // Handle user search
         $('#searchBar').on('input', function () {
             var searchTerm = $(this).val().toLowerCase();

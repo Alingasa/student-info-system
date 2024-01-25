@@ -32,19 +32,21 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
+        <div class="table-responsive">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                   <div class="row">
                      
                       <div class="col-sm-12 col-md-6">
                           <div id="dataTable_filter" class="dataTables_filter">
-                              @if (count($Admin) > 10)
+                             
                           <input type="text" id="searchBar" class="form-control" style="width: 250px" placeholder="Search">
-                      @endif
+                  
                           </div>
                           <br>
                       </div>
                   </div>
                   <div class="row">
+                
                       <div class="col-sm-12">
                           <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                     <thead>

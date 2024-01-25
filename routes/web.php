@@ -28,22 +28,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::middleware('auth:web')->group(function(){
 
-//     Route::resource('admin', AdminController::class);
-
-// Route::resource('student', StudentController::class);
-
-// });
-
-// Route::get('/not-authorize', function(){
-//     return view('auth.not-authorize');
-// })->name('not-authorize');
-
-// Route::middleware('checkRouteAccess')->group(function () {
-
-    
-// });
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 

@@ -6,7 +6,7 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-  
+  @if(auth()->user()->role == 'Admin')
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#generateReportModal">
         <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
     </a>
@@ -165,17 +165,13 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    {{-- <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                      Total Paid</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalPaid}}</div> --}}
+                                   
                                 
                                     <div class="text-xs font-weight-bold text-black text-uppercase mb-1">
                                       Total Payable</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalPayable}}</div>
                                     
-                                    {{-- <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                      Total Refunds</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalRefund}}</div> --}}
+                                
                                 </div>
                                 
                                 <div class="col-auto">
@@ -227,39 +223,8 @@
 
     
 </div>
+@endif
 
-
-<script>
-    // Handle dropdown change event
-    $('#teacherReport').on('change', function () {
-        // Get the selected value
-        var selectedReport = $(this).val();
-
-        // Redirect based on the selected value
-        switch (selectedReport) {
-            case 'Student':
-                window.location.href = '{{ route("student.index") }}'; // Replace with the actual route
-                break;
-            case 'Teacher':
-                window.location.href = '{{ route("teacher.index") }}'; // Replace with the actual route
-                break;
-            case 'Course':
-                window.location.href = '{{ route("course.index") }}'; // Replace with the actual route
-                break;
-            case 'Subject':
-                window.location.href = '{{ route("subject.index") }}'; // Replace with the actual route
-                break;
-            case 'Payment':
-                window.location.href = '{{ route("payment.index") }}'; // Replace with the actual route
-                break;
-            default:
-                // Handle other cases or show an alert
-                alert('Invalid report selected');
-        }
-    });
-
-   
-</script>
 
 
   @endsection

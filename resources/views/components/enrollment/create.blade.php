@@ -26,12 +26,7 @@
     </div>
  
    
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Enrollment No</strong>
-            <input type="text" name="enrollment_no" class="form-control" placeholder="Enrollment No">
-        </div>
-    </div>
+  
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             {{-- <strong>Subject Id</strong>
@@ -56,28 +51,7 @@
                 </select>
         </div>
     </div>
-    {{-- <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Student</strong>
-            <select  class="form-control" name="student_id" id="student_id">
-                       @foreach($student as $id=>$name)   
-                <option value="{{$id}}">{{$name}}</option>
-                @endforeach
-                </select>
-        </div>
-        </div> --}}
-        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Student</strong>
-                <input type="text" class="form-control" name="student_search" id="student_search" list="studentsList">
-                <datalist id="studentsList">
-                    @foreach($student as $id => $name)   
-                        <option value="{{ $name }}" data-id="{{ $id }}">
-                    @endforeach
-                </datalist>
-                <input type="hidden" name="student_id" id="selected_student_id">
-            </div>
-        </div> --}}
+   
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Student</strong>

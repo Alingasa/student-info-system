@@ -23,16 +23,10 @@
 <input type="hidden" name="id" id="id" value="{{$enrollment->id}}" id="id">
      <div class="row">
     </div>
+        
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Enrollment No</strong>
-                <input type="text" name="enrollment_no" value="{{ $enrollment->enrollment_no }}" class="form-control" placeholder="Enrollment No">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                {{-- <strong>Subject Id</strong>
-                <input type="text" name="subject_id" class="form-control" placeholder="Subject Id"> --}}
+                
                 <strong>Subject</strong>
                 <select  class="form-control" name="subject_id" id="subject_id">
                            @foreach($subject as $id=>$name)   
