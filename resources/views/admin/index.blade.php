@@ -35,7 +35,7 @@
         <div class="table-responsive">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                   <div class="row">
-                     
+           
                       <div class="col-sm-12 col-md-6">
                           <div id="dataTable_filter" class="dataTables_filter">
                              
@@ -83,7 +83,7 @@
                             @if ($admin->status == 'Active')
                                 <p style="color: green;">{{ $admin->status }}</p>
                             @else
-                                <p style="color: red;">{{ $admin->status }}</p>
+                    <p style="color: red;">{{ $admin->status }}</p>
                             @endif
                         </td>
                         <td>

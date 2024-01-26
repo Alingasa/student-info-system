@@ -107,7 +107,7 @@ public function update(Request $request, User $Admin): RedirectResponse
         // dd($avatar);
         $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
         $data['avatar'] = $avatarPath;
-        
+
     } else {
         // No file provided, set avatar to null
         $data['avatar'] = null;
