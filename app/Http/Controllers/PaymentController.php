@@ -37,7 +37,7 @@ class PaymentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'student_id' => 'required',
+            
             'payable' => 'required',
             'refund' => 'required',
             'paid_date' => 'required',
@@ -63,8 +63,10 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment): View
     {
-        $enrollment = Enrollment::pluck('enrollment_no','id');
-        return view('components.payment.edit',compact('payment','enrollment'));
+        $student = Student::select('student_id','firstname', 'lastname', 'id')->get()->mapWithKeys(function ($student) {
+            return [ $student->id =>$student->firstname . ' ' . $student->lastname];
+        });
+        return view('components.payment.edit',compact('payment', 'student'));
     }
   
     /**
@@ -73,7 +75,7 @@ class PaymentController extends Controller
     public function update(Request $request, Payment $payment): RedirectResponse
     {
         $request->validate([
-            'student_id' => 'required',
+            
             'payable' => 'required',
             'refund' => 'required',
             'paid_date' => 'required',
@@ -98,4 +100,12 @@ class PaymentController extends Controller
         return redirect()->route('payment.index')
                         ->with('delete','Course deleted successfully');
     }
+    // app/Http/Controllers/PaymentController.php
+
+  public function print(Payment $payment)
+ {
+    return view('components.payment.print', compact('payment'));
+  
+
+}
 }

@@ -17,5 +17,11 @@ class Student extends Model
        
     ];
     use HasFactory;
-    
+    // Student.php
+
+    public function payments() {
+        return $this->hasMany(Payment::class);
+    }
+
+
 }

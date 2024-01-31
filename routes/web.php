@@ -48,6 +48,10 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
     
     Route::resource('payment', PaymentController::class);
 
+    // routes/web.php
+    Route::get('/payment/{payment}/print', [PaymentController::class, 'print'])->name('payment.print');
+
+
   
 
     

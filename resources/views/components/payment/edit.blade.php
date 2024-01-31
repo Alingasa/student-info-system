@@ -1,78 +1,81 @@
 @extends('dashboard.homedashboard.home')
 
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            Edit Payment
-        </div>
-    
+
+<div class="card">
+    <div class="card-header">
+        Edit Payment
+    </div>
+
     @if ($errors->any())
- @include('layout.error')
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
 
-<form action="{{ route('payment.update',$payment->id) }}" method="POST">
-    @csrf
-    @method('PUT')
 
-     <div class="row">
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Enrollment No</strong>
-            <select  class="form-control" name="enrollment_id" id="enrollment_id">
-                       @foreach($enrollment as $id=>$enrollment_no)   
-                <option value="{{$id}}">{{$enrollment_no}}</option>
-                @endforeach
-                </select>
-        </div>
-    </div>
-       
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong for="payable">Payable</strong>
-                <input type="text" name="payable" value="{{ $payment->payable }}" class="form-control" placeholder="Payable">
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Refund</strong>
-            <input type="text" name="refund" value="{{ $payment->refund }}" class="form-control" placeholder="Refund">
-        </div>
-            </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong for="payable">Paid Date</strong>
-                    <input type="text" name="paid_date" value="{{ $payment->paid_date }}" class="form-control" placeholder="Paid Date">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong for="payable">Paid</strong>
-                    <input type="text" name="paid" value="{{ $payment->paid }}"  class="form-control" placeholder="Paid">
-            </div>
-        
-            <button type="submit" class="btn btn-primary btn-sm">Submit</button>  
-            <a class="btn btn-danger btn-sm" href="{{ route('payment.index') }}">Cancel</a> 
-            <div class="form-group">
-                
-        </div>
-        
-      
-        </div>
-        </div>
-        
-      
-        </div>
-  
-       
-    </div>
-    
-    </div>
+    <form action="{{ route('payment.update', $payment->id) }}" method="POST">
+        @csrf
+        @method('PUT')
 
-</form>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label >Student ID</label>
+                        <input type="text" class="form-control" value="{{ $payment->student->student_id ?? '' }}" readonly>
+                    </div>
+                </div>
 
-    </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="student_name">Student Name</label>
+                        <input type="text" name="student_name" class="form-control" value="{{ $payment->student->firstname . ' ' . $payment->student->lastname ?? '' }}" readonly>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="payable">Payable</label>
+                        <input type="text" name="payable" class="form-control" value="{{ $payment->payable }}">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="refund">Refund</label>
+                        <input type="text" name="refund" class="form-control" value="{{ $payment->refund }}">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="paid_date">Paid Date</label>
+                        <input type="date" name="paid_date" class="form-control" value="{{ $payment->paid_date }}">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="paid">Paid</label>
+                        <input type="text" name="paid" class="form-control" value="{{ $payment->paid }}">
+                    </div>
+                </div>
+
+                <!-- Add other form fields... -->
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a class="btn btn-danger" href="{{ route('payment.index') }}">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
 @endsection
-
- 
-   

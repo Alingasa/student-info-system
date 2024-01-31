@@ -92,7 +92,7 @@ class EnrollmentController extends Controller
             'course_id' => 'required',
             'year' => 'required',
             'semester' => 'required',
-            'student_id' => 'required|unique:enrollments',
+            'student_id' => 'required',
             'join_date' => 'required',
             'fee' => 'required',
         ]);
@@ -116,7 +116,7 @@ class EnrollmentController extends Controller
         $enrollment->teacher()->dissociate();
     
         // Save the changes to update the foreign keys to null
-        $enrollment->save();
+      
     
         // Delete the enrollment itself
         $enrollment->delete();

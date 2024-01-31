@@ -21,7 +21,7 @@
             <strong>Current Avatar</strong>
             <br>
             @if($Admin->avatar)
-            s<img src="{{ asset('storage/' . $Admin->avatar) }}" alt="Current Profile Picture" style="width: 100px;" class="img-profile rounded-circle">
+            <img src="{{ asset('storage/' . $Admin->avatar) }}" alt="Current Profile Picture" style="width: 100px;" class="img-profile rounded-circle">
             @else
                 <img src="{{ asset('my_dashboard/img/undraw_profile.svg') }}" alt="Default Profile Picture" style="width: 80px;" class="img-profile rounded-circle">
             @endif

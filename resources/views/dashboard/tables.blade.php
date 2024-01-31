@@ -39,7 +39,7 @@
                     {{-- @foreach ($enrollments as $sitem) --}}
                     @foreach($enrollments as $enrollment)
                     <tr class="user-row">
-                      <td class="text-danger">{{ $enrollment->student->student_id }}</td>
+                      <td class="text-danger">{{ $enrollment->student->student_id ?? 'Student ID not available'}}</td>
                       <td>{{ $enrollment->student->firstname . ' ' . $enrollment->student->lastname}}</td>
                       @if($enrollment->course->name == "BSIT")
                       <td class="text-warning">  

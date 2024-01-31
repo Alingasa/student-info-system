@@ -42,7 +42,7 @@
                           <td>{{ ++$i }}</td>
                           <!-- Other enrollment fields -->
                      
-                            <td class="text-danger">{{ $enrollment->student->student_id }}</td>
+                            <td class="text-danger">{{ $enrollment->student->student_id ?? 'Student ID not available'}}</td>
                           <td>{{ $enrollment->course->name }}</td>
                           <td>{{ $enrollment->year. ' Year' }}</td>
                           <td>{{ $enrollment->semester}}</td>
@@ -59,7 +59,9 @@
                                   @csrf
                                   @method('DELETE')
                     
-                                  <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                 
+                                  <a class="btn btn-sm btn-danger" href="#" data-toggle="modal" data-target="#deleteModal_{{ $enrollment->id }}" >Delete</a>
+                                        @include('components.enrollment.modal.deletemodal', ['enrollment' => $enrollment])
                               </form>
                           </td>
                         
@@ -67,11 +69,8 @@
                       @endforeach
                   </table>
                   </table>
-                  @if(isset($user_name))
-                  <div class="alert alert-success mb-0">
-                    <strong>Success!</strong> {{ $user_name }}'s information has been successfully updated.
-                  </div>
-                @endif
+                  
+              
                   @else
                   <br>
                   <center>

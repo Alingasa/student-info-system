@@ -24,8 +24,8 @@
    
    
 </a>
-  <!-- Divider --> <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+  <!-- Divider --> <a class="dropdown-item text-light" href="#" data-toggle="modal" data-target="#logoutModal">
+      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-0 text-gray-400"></i>
       Logout
   </a>  
   <hr class="sidebar-divider my-0">
@@ -35,7 +35,7 @@
   <!-- Nav Item - Dashboard -->
               <!-- Nav Item - Dashboard -->
               <li class="nav-item active">
-                  <a class="nav-link" href="{{route('dashboard.index')}}">
+                  <a class="nav-link " href="{{route('dashboard.index')}}">
                       <i class="fas fa-fw fa-tachometer-alt"></i>
                       <span>Dashboard</span></a>
               </li>
@@ -44,7 +44,7 @@
   <hr class="sidebar-divider">
 
   <li class="nav-item">
-    <a class="nav-link" href="#" data-toggle="modal" data-target="#profileModal">
+    <a class="nav-link " href="#" data-toggle="modal" data-target="#profileModal">
         <i class="fas fa-solid fa-users"></i>
         <span>Profile</span></a>
 </li>

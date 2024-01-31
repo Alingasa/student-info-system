@@ -24,6 +24,7 @@
             </div>
             <div class="table-responsive">
                 <br>
+                @if($subject->count() > 0 )
                 @foreach ($subject as $sub)
                <p class="p-2 text-danger">{{'Page #'. ++$i}}</p>
                 <h5 class="p-2">{{ $sub->course->name. ': ' . $sub->year. '  Year  '}}</h5>
@@ -36,7 +37,7 @@
                     @csrf
                     @method('DELETE')
       
-   
+                   
 @if($sub->course->name == 'BSIT' && $sub->year == '1st' && $sub->semester == 'First_Semester')
 <table class="table">
     <thead>
@@ -1849,6 +1850,7 @@
 </table>
 <p class="p-1">Total:  5 Subjects</p>
 @endif
+
 @if(auth()->user()->role == "Admin"|| auth()->user()->role == "Teacher")
 <div style="padding-left: 94%;"><a class="btn btn-sm btn-danger" href="#" data-toggle="modal" data-target="#deleteModal_{{ $sub->id }}" >Delete</a>
     @include('components.subject.modal.deletemodal', ['sub' => $sub])</div> 
@@ -1860,7 +1862,12 @@
             </div>
            
           </div>
-       
+          @else
+         
+                            <center>
+                              <h5 class="text-danger">No Available Data</h5>
+                            </center>
+              @endif
           @include('components.subject.jsearch.js')
           @include('layout._footer')
 @endsection
