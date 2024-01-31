@@ -17,7 +17,7 @@ class CourseController extends Controller
      */
     public function index(): View
     {
-        $course = Course::latest()->get();
+        $course = Course::simplepaginate(5);
         
         return view('components.course.index',compact('course'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -39,7 +39,7 @@ class CourseController extends Controller
         $request->validate([
             'name' => 'required|unique:courses',
             'description' => 'required',
-            'duration' => 'required',
+           
         ]);
         
         Course::create($request->all());
@@ -72,7 +72,7 @@ class CourseController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'duration' => 'required',
+          
         ]);
         
         $course->update($request->all());

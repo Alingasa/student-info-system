@@ -12,12 +12,9 @@ class Course extends Model
     protected $fillable = [
         'name',
          'description',
-        'duration',
+        
     ];
     use HasFactory;
 
-    public function duration()
-    {
-        return $this->duration." " ."Months";
-    }
+  
 }

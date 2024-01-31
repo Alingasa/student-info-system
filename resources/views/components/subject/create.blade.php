@@ -1,7 +1,7 @@
 @extends('dashboard.homedashboard.home')
 
 @section('content')
-@include('components.subject.jsdatepicker.header')
+
 
      <div class="card">
         <div class="card-header">
@@ -10,14 +10,7 @@
         </div>
        
 @if ($errors->any())
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
+@include('layout.error')
 @endif
 
 <form action="{{ route('subject.store') }}" method="POST">
@@ -27,12 +20,7 @@
     </div>
  
    
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Name</strong>
-            <input type="text" name="name" class="form-control" placeholder="Name">
-        </div>
-    </div>
+ 
        
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
@@ -46,8 +34,32 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
+            <strong>Year</strong>
+            <select name="year" class="form-control">
+                <option value="1st">1st year</option>
+                <option value="2nd">2nd year</option>
+                <option value="3rd">3rd year</option>
+                <option value="4th">4th year</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Semester</strong>
+            <select name="semester" class="form-control">
+                <option value="First_Semester">1st Semester</option>
+                <option value="Second_Semester">2nd Semester</option>
+           
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
             <strong>Started Date</strong>
-            <input type="text" data-date-format="yyyy/mm/dd" id="datepicker" name="start_date" class="form-control" placeholder="Started Date">
+            <input type="date"  name="start_date" class="form-control" placeholder="Started Date">
         </div>
      
      
@@ -70,5 +82,4 @@
 </form>
     </div> 
 
- @include('components.subject.jsdatepicker.script')
 @endsection 

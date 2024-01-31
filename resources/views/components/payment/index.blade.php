@@ -8,9 +8,9 @@
                     <div class="col-md-6 col-12">
                         <i class="fas fa-solid fa-users"></i>
                         Payment
-                        @if (count($payments) > 10)
+                      
                         <input type="text" id="searchBar" class="form-control" style="width: 250px" placeholder="Search">
-                    @endif
+                   
                     </div>
                     @if(auth()->user()['role'] == 'Admin' || auth()->user()['role'] == 'Teacher')
                     <div class="col-md-6 col-12 text-right">
@@ -19,23 +19,17 @@
                     @endif
                 </div>
             </div>
+            <div class="table-responsive">
+                @if($payments->count() > 0 )
             <div class="card-body p-0">
                 <table class="table table-sm table-hover table-striped mb-0" id="myDataTable">
                    
-                  @if ($message = Session::get('success'))
-                      <div class="alert alert-success">
-                          <p>{{ $message }}</p>
-                      </div>
-                  @endif
-                  @if ($message = Session::get('delete'))
-                  <div class="alert alert-danger">
-                      <p>{{ $message }}</p>
-                  </div>
-              @endif
+                 
                   <table class="table table-bordered">
                       <tr class="user-row">
                           <th>No</th>
-                          <th>Enrollment No</th>
+                          <th>ID</th>
+                          <th>Student</th>
                           <th>Payable</th>
                           <th>Refund</th>
                           <th>Paid Date</th>
@@ -48,7 +42,8 @@
                       <tr>
                           <td>{{ ++$i }}</td>
                  
-                          <td>{{ $pay->enrollment->enrollment_no}}</td>
+                          <td>{{ $pay->student->student_id }}</td>
+                          <td>{{$pay->student->firstname . ' '}}{{$pay->student->lastname }}</td>
                           <td>{{ $pay->payable}}</td>
                           <td>{{ $pay->refund }}</td>
                           <td>{{ $pay->paid_date}}</td>
@@ -89,8 +84,12 @@
                       <strong>Success!</strong> {{ $user_name }}'s information has been successfully updated.
                     </div>
                   @endif
+                  @else
+                  <br>
+                  <center><h5 class="text-danger">No Available Data</h5></center>
+                  @endif
             </div>
           </div>
-
+          @include('layout._footer')
     @endsection
     

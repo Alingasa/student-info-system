@@ -10,11 +10,11 @@ class Enrollment extends Model
     protected $table = 'enrollments';
     protected $primarykey = 'id';
     protected $fillable = [
-        'enrollment_no',
-        'subject_id',
+       
          'course_id',
+         'year',
+         'semester',
         'student_id',
-        'teacher_id',
         'join_date',
         'fee',
     ];
@@ -40,7 +40,7 @@ class Enrollment extends Model
     {
         return $this->belongsto(Payment::class);
     }
-  // Assuming you have a valid $subjectId, replace it with the actual subject ID you want to use
+ 
 
 }
 

@@ -2,7 +2,6 @@
  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 
-      {{-- <div class="sidebar-brand-text mx-3" style="color: white;"><center><p style="font-size: 30px;">Admin</p></center> </div> --}}
       <a class="sidebar-brand d-flex align-items-center justify-content-center">
         <div class="sidebar-brand-icon rotate-n-20" style="padding-top: 50px;">
             {{-- <i class="material-symbols-outlined">
@@ -22,12 +21,16 @@
         </div>
     </a>
     <br>
-    {{-- <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> --}}
+   
    
 </a>
-  <!-- Divider -->
+  <!-- Divider --> <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+      Logout
+  </a>  
   <hr class="sidebar-divider my-0">
+ 
+ 
 
   <!-- Nav Item - Dashboard -->
               <!-- Nav Item - Dashboard -->
@@ -58,17 +61,7 @@
         <span>Users</span></a>
 </li>
 @endif
-{{-- 
-@if(auth()->user()['role'] == 'Student')
-<li class="nav-item">
-    <a class="nav-link" href="#"data-toggle="modal" data-target="#profileModal">
-        <i class="material-symbols-outlined">
-            group
-            </i>
-        <span>Profile</span></a>
-       
-</li>
-@endif --}}
+
 
 <li class="nav-item">
     <a class="nav-link" href="{{ route('course.index')}}">
@@ -122,8 +115,9 @@
         <span>Payment</span></a>
 </li>
 @endif
-
+@if(auth()->user()->role == "Admin")
    <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>
 </div>
+@endif
 </ul>

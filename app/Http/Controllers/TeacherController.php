@@ -17,13 +17,14 @@ class TeacherController extends Controller
      */
     public function index(): View
     {
+        
         $adminUsers = User::latest()->get();
 
         foreach ($adminUsers as $admin) {
             // Check if the current role is 'Student'
             $isTeacher = $admin->role === 'Teacher';
         
-            // Check if a Tea$isTeacher record already exists for the user
+            // Check if a T$isTeacher record already exists for the user
             $existingTeacher = Teacher::where('user_id', $admin->id)->first();
         
             if ($isTeacher && !$existingTeacher) {
@@ -54,10 +55,11 @@ class TeacherController extends Controller
                 ]);
             }
         }
-        $teacher = Teacher::latest()->get();
+        $teacher = Teacher::simplePaginate(5);
         
         return view('components.teacher.index',compact('teacher'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
+    
     }
   
     /**

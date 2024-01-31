@@ -1,7 +1,7 @@
 @extends('dashboard.homedashboard.home')
 
 @section('content')
-@include('components.enrollment.jsdatepicker.header')
+
      <div class="card">
         <div class="card-header">
             Enrollment Application <br>
@@ -9,14 +9,7 @@
         </div>
        
 @if ($errors->any())
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
+@include('layout.error')
 @endif
 
 <form action="{{ route('enrollment.store') }}" method="POST">
@@ -24,23 +17,8 @@
 
  <div class="row">
     </div>
- 
-   
   
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            {{-- <strong>Subject Id</strong>
-            <input type="text" name="subject_id" class="form-control" placeholder="Subject Id"> --}}
-            <strong>Subject</strong>
-            <select  class="form-control" name="subject_id" id="subject_id">
-                       @foreach($subject as $id=>$name)   
-                <option value="{{$id}}">{{$name}}</option>
-                @endforeach
-       
-                
-                </select>
-        </div>
-    </div>
+    
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Course</strong>
@@ -51,52 +29,50 @@
                 </select>
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Year</strong>
+            <select name="year" class="form-control">
+                <option value="1st">1st year</option>
+                <option value="2nd">2nd year</option>
+                <option value="3rd">3rd year</option>
+                <option value="4th">4th year</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Year</strong>
+            <select name="semester" class="form-control">
+                <option value="First_Semester">1st Semester</option>
+                <option value="Second_Semester">2nd Semester</option>
+             
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+    </div>
    
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Student</strong>
-                <input type="text" class="form-control" name="student_search" id="student_search" list="studentsList">
-                <datalist id="studentsList">
-                    @foreach($student as $id => $name)   
-                        <option value="{{ $name }}" data-id="{{ $id }}">
-                    @endforeach
-                </datalist>
-                <input type="hidden" name="student_id" id="selected_student_id">
-            </div>
+   
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <label for="student_select"><strong>Student</strong></label>
+            <select class="form-control" name="student_id" id="student_select">
+                <option value="">Select Student</option>
+                @foreach($student as $id => $name)   
+                    <option value="{{ $id }}">{{ $name }}</option>
+                @endforeach
+            </select>
         </div>
-        
-        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Teacher</strong>
-                <select  class="form-control" name="teacher_id" id="teacher_id">
-                           @foreach($teacher as $id=>$name)   
-                    <option value="{{$id}}">{{$name}}</option>
-                    @endforeach
-                    </select>
-            </div>
-        </div> --}}
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Teacher</strong>
-                <input type="text" class="form-control" name="teacher_search" id="teacher_search" list="teachersList">
-                <datalist id="teachersList">
-                    @foreach($teacher as $id => $name)   
-                        <option value="{{ $name }}" data-id="{{ $id }}">
-                    @endforeach
-                </datalist>
-                <input type="hidden" name="teacher_id" id="selected_teacher_id">
-            </div>
-        </div>
-            {{-- <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Join Date</strong>
-                    <input type="text" name="join_date" class="form-control" placeholder="Join Date">
-                </div>
-                </div> --}}
+    </div>
+    
+
+    
+          
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Enrolled Date</strong>
-                        <input type="text" data-date-format="yyyy/mm/dd" id="datepicker" name="join_date" class="form-control" placeholder="Enrolled Date">
+                        <input type="date" name="join_date" class="form-control" placeholder="Enrolled Date">
                     </div>
                     </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -119,16 +95,15 @@
        
     </div>
     </div>
-    {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+   
    
  </div>
 </div>
 </form>
     </div> 
 
- @include('components.enrollment.jsscript.jscript')
- 
- @include('components.enrollment.jsteacher.jscript')
 
- @include('components.enrollment.jsdatepicker.script')
+  
+
+
 @endsection 

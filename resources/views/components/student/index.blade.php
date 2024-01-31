@@ -4,15 +4,15 @@
 
            <div class="card">
             <div class="card-header">
-            
+           
                 <div class="row">
                   @if(auth()->user()['role'] == 'Admin' || auth()->user()['role'] == 'Teacher')
                     <div class="col-md-6 col-12">
                         <i class="fas fa-solid fa-users"></i>
                         Students
-                        @if (count($student) > 10)
+                
                         <input type="text" id="searchBar" class="form-control" style="width: 250px" placeholder="Search">
-                    @endif
+               
                     </div>
                     @else
                     <div class="col-md-6 col-12">
@@ -20,10 +20,14 @@
                       Profile
                   </div>
                   @endif
+            
                  
                 </div>
+                
             </div>
+
             <div class="table-responsive">
+              @if($student->count() > 0)
             <div class="card-body p-0">
                 <table classs="table table-sm table-hover table-striped mb-0" id="myDataTable">
                    
@@ -55,17 +59,17 @@
                         </td>
                      
 
-                          <td style="color:red;">{{ $students->student_id }}</td>
+                          <td class="text-danger">{{ $students->student_id ?? 'Student ID not available'}}</td>
                           
                           <td>{{ $students->firstname }}</td>
                           <td>{{ $students->lastname }}</td>
                           <td>{{ $students->email }}</td>  
                           <td>
                             @if($students->status == 'Active')
-                            <p style="color: green;">{{ $students->status }}
+                            <p class="text-success">{{ $students->status }}
                             </p>
                             @else 
-                            <p style="color: gray;">{{ $students->status }}
+                            <p class="text-secondary">{{ $students->status }}
                               @endif 
                           </td>
                           @endif 
@@ -78,16 +82,16 @@
                             <span class="badge badge-secondary">{{ $students->role }}</span>
                           @endif
                         </td>
-                          <td style="color:red;">{{ Auth::user()->user_id}}</td>
+                          <td class="text-danger">{{ Auth::user()->user_id}}</td>
                           <td>{{ Auth::user()->firstname}}</td>  
                           <td>{{ Auth::user()->lastname}}</td>
                           <td>{{ Auth::user()->email}}</td>
                           <td>
                             @if($students->status == 'Active')
-                            <p style="color: green;">{{ $students->status }}
+                            <p class="text-success">{{ $students->status }}
                             </p>
                             @else 
-                            <p style="color: gray;">{{ $students->status }}
+                            <p class="text-secondary">{{ $students->status }}
                         
                           </p>
                           @endif
@@ -100,7 +104,16 @@
                       @endforeach
                   </table>
                   </table>
-                 
+                  <nav aria-label="...">
+                    <ul class="pagination">
+                      
+                      {{ $student->links() }}
+                    </ul>
+                  </nav>
+                  @else
+                  <br>
+                  <center><h5 class="text-danger"> No Available Data</h5></center>
+                  @endif
             </div>
           </div>
       @include('components.student.jsearch.js')

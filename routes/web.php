@@ -34,7 +34,6 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 
     Route::resource('admin', AdminController::class);
 
-    
     Route::resource('student', StudentController::class);
     
     Route::resource('teacher', TeacherController::class);

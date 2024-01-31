@@ -12,11 +12,11 @@
                         <input type="text" id="searchBar" class="form-control" style="width: 250px" placeholder="Search">
                     @endif
                     </div>
-                    {{-- <div class="col-md-6 col-12 text-right">
-                        <a href="{{ route('teacher.create') }}" class="btn btn-sm btn-primary">Add New Teacher</a>
-                    </div> --}}
+            
                 </div>
             </div>
+            <div class="table-responsive">
+              @if($teacher->count() > 0)
             <div class="card-body p-0">
                 <table class="table table-sm table-hover table-striped mb-0" id="myDataTable">
                    
@@ -50,7 +50,7 @@
                           @else
                             <span class="badge badge-secondary">{{ $teachers->role }}</span>
                           @endif
-                          <td style="color: red;">{{ $teachers->teacher_id }}</td>
+                          <td class="text-danger">{{ $teachers->teacher_id ?? 'Teacher ID not available' }}</td>
                           <td>{{ $teachers->firstname }}</td>
                           <td>{{ $teachers->lastname }}</td>
 
@@ -60,9 +60,9 @@
                           <td>{{ $teachers->email }}</td>
                           <td> 
                             @if($teachers->status == 'Active')
-                            <p style="color: green;">{{ $teachers->status }}</p>
+                            <p class="text-success">{{ $teachers->status }}</p>
                           @else
-                          <p style="color: gray;">{{ $teachers->status }}</p>
+                          <p class="text-secondary">{{ $teachers->status }}</p>
                           @endif
                           </td>
                           
@@ -70,11 +70,21 @@
                       @endforeach
                   </table>
                   </table>
-                  
+                  <nav aria-label="...">
+                    <ul class="pagination">
+                      
+                      {{ $teacher->links() }}
+                    </ul>
+                  </nav>
+                 
                   @if(isset($user_name))
                     <div class="alert alert-success mb-0">
                       <strong>Success!</strong> {{ $user_name }}'s information has been successfully updated.
                     </div>
+                  @endif
+                  @else
+                  <br>
+                  <center><h5 class="text-danger">No Available Data</h5></center>
                   @endif
             </div>
           </div>

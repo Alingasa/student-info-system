@@ -25,9 +25,9 @@ class EnrollmentController extends Controller
      */
     public function create(): View
     {
-        $subject = Subject::pluck('name', 'id');
+        $subject = Subject::pluck('year', 'id');
         $course = Course::pluck('name','id');
-        $student = Student::select('firstname', 'lastname', 'id')->get()->mapWithKeys(function ($student) {
+        $student = Student::select('student_id','firstname', 'lastname', 'id')->get()->mapWithKeys(function ($student) {
             return [ $student->id =>$student->firstname . ' ' . $student->lastname];
         });
         $teacher = Teacher::select('firstname', 'lastname', 'id')->get()->mapWithKeys(function ($teacher) {
@@ -46,11 +46,10 @@ class EnrollmentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-        
-            'subject_id' => 'required',
             'course_id' => 'required',
+            'year' => 'required',
+            'semester' => 'required',
             'student_id' => 'required|unique:enrollments',
-            'teacher_id' => 'required',
             'join_date' => 'required',
             'fee' => 'required',
         ]);
@@ -73,9 +72,9 @@ class EnrollmentController extends Controller
      */
     public function edit(Enrollment $enrollment): View
     {
-        $subject = Subject::pluck('name', 'id');
+        $subject = Subject::pluck('year', 'id');
         $course = Course::pluck('name','id');
-        $student = Student::select('firstname', 'lastname', 'id')->get()->mapWithKeys(function ($student) {
+        $student = Student::select('student_id','firstname', 'lastname', 'id')->get()->mapWithKeys(function ($student) {
             return [ $student->id =>$student->firstname . ' ' . $student->lastname];
         });
         $teacher = Teacher::select('firstname', 'lastname', 'id')->get()->mapWithKeys(function ($teacher) {
@@ -90,11 +89,10 @@ class EnrollmentController extends Controller
     public function update(Request $request, Enrollment $enrollment): RedirectResponse
     {
         $request->validate([
-          
-            'subject_id' => 'required',
             'course_id' => 'required',
-            'student_id' => 'required',
-            'teacher_id' => 'required',
+            'year' => 'required',
+            'semester' => 'required',
+            'student_id' => 'required|unique:enrollments',
             'join_date' => 'required',
             'fee' => 'required',
         ]);

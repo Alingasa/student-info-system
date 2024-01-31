@@ -39,6 +39,9 @@
 <body>
     <div class="card">
         <div class="card-header">
+       
+            
+       
             <div class="row">
                 @if(auth()->user()['role'] == 'Admin' || auth()->user()['role'] == 'Teacher')
                     <div class="col-md-6 col-12">
@@ -53,6 +56,7 @@
                 @endif
             </div>
         </div>
+       
         <div class="card-body p-0">
             <table class="table table-bordered">
                 <tr>
@@ -79,17 +83,17 @@
                                 @endif
                             </td>
 
-                            <td style="color:red;">{{ $students->student_id }}</td>
+                            <td class="text-danger">{{ $students->student_id }}</td>
 
                             <td>{{ $students->firstname }}</td>
                             <td>{{ $students->lastname }}</td>
                             <td>{{ $students->email }}</td>
                             <td>
                                 @if($students->status == 'Active')
-                                    <p style="color: green;">{{ $students->status }}
+                                    <p class="text-success">{{ $students->status }}
                                     </p>
                                 @else
-                                    <p style="color: gray;">{{ $students->status }}
+                                    <p class="text-secondary">{{ $students->status }}
                                 @endif
                             </td>
                         @endif
@@ -102,16 +106,16 @@
                                     <span class="badge badge-secondary">{{ $students->role }}</span>
                                 @endif
                             </td>
-                            <td style="color:red;">{{ Auth::user()->user_id}}</td>
+                            <td class="text-danger">{{ Auth::user()->user_id}}</td>
                             <td>{{ Auth::user()->firstname}}</td>
                             <td>{{ Auth::user()->lastname}}</td>
                             <td>{{ Auth::user()->email}}</td>
                             <td>
                                 @if($students->status == 'Active')
-                                    <p style="color: green;">{{ $students->status }}
+                                    <p class="text-success">{{ $students->status }}
                                     </p>
                                 @else
-                                    <p style="color: gray;">{{ $students->status }}
+                                    <p class="text-secondary">{{ $students->status }}
                                 </p>
                                 @endif
                             </td>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Enrollment;
 use App\Models\Payment;
+use App\Models\Student;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -14,7 +15,7 @@ class PaymentController extends Controller
     {
     
         
-        $payments = Payment::with('enrollment')->get();
+        $payments = Payment::with('student')->get();
         return view('components.payment.index',compact('payments'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -24,7 +25,9 @@ class PaymentController extends Controller
      */
     public function create(): View
     {
-        $payment = Enrollment::pluck('enrollment_no','id');
+        $payment = Student::select('student_id','firstname', 'lastname', 'id')->get()->mapWithKeys(function ($student) {
+            return [ $student->id =>$student->firstname . ' ' . $student->lastname];
+        });
         return view('components.payment.create',compact('payment'));
     }
   
@@ -34,7 +37,7 @@ class PaymentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'enrollment_id' => 'required',
+            'student_id' => 'required',
             'payable' => 'required',
             'refund' => 'required',
             'paid_date' => 'required',
@@ -70,7 +73,7 @@ class PaymentController extends Controller
     public function update(Request $request, Payment $payment): RedirectResponse
     {
         $request->validate([
-            'enrollment_id' => 'required',
+            'student_id' => 'required',
             'payable' => 'required',
             'refund' => 'required',
             'paid_date' => 'required',
@@ -88,7 +91,7 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment): RedirectResponse
     {
-        $payment->enrollment()->dissociate();
+        $payment->student()->dissociate();
         $payment->save();
         $payment->delete();
          

@@ -12,10 +12,10 @@ class SubjectController extends Controller
 {
     public function index(): View
     {
-        $subject = Subject::latest()->get();
+        $subject = Subject::simplePaginate(1);
         $course = Subject::with(['course'])->get();
         return view('components.subject.index',compact('subject','course'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+                    ->with('i', (request()->input('page', 1) - 1) * 1);
     }
   
     /**
@@ -32,8 +32,8 @@ class SubjectController extends Controller
     public function store(Request $request):RedirectResponse
     {
         $request->validate([
-            'name' => 'required|unique:subjects',
             'course_id' => 'required',
+            'year' => 'required',
             'start_date' => 'required',
             
         ]);
@@ -67,8 +67,9 @@ class SubjectController extends Controller
     public function update(Request $request, Subject $subject): RedirectResponse
     {
         $request->validate([
-            'name' => 'required',
+            
             'course_id' => 'required',
+            'year' => 'required',
             'start_date' => 'required',
             
         ]);

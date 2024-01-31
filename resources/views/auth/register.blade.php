@@ -15,7 +15,7 @@
                     <div class="row mb-3">
                         <label for="user_id" class="col-md-4 col-form-label text-md-end">{{ __('User ID') }}</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="user_id" id="user_id" value="00000" readonly>
+                            <input type="text" class="form-control" readonly placeholder="Please Refer to Admin">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Temporary Password') }}</label>
                         <div class="col-md-6">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                             @error('password')

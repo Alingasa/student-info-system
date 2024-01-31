@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 use Auth;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Support\Facades\Storage;
+
 
 class AdminController extends Controller
 {
@@ -20,7 +22,7 @@ class AdminController extends Controller
     {
         
         
-        $Admin = User::latest()->get();
+        $Admin = User::simplePaginate(5);
         
         return view('admin.index',compact('Admin'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -63,6 +65,7 @@ class AdminController extends Controller
      */
     public function show(User $Admin): View
     {
+        
         return view('admin.show',compact('Admin'));
     }
   
@@ -71,6 +74,7 @@ class AdminController extends Controller
      */
     public function edit(User $Admin): View
     {
+        
         return view('admin.edit',compact('Admin'));
     }
   
@@ -91,7 +95,6 @@ public function update(Request $request, User $Admin): RedirectResponse
         'status' => 'required',
         'password' => ['required', 'string', 'min:8', 'confirmed'],
     ]);
-
     // dd($data);
 
     // Update other fields
@@ -112,13 +115,14 @@ public function update(Request $request, User $Admin): RedirectResponse
         // No file provided, set avatar to null
         $data['avatar'] = null;
     }
-    // dd($data);
-    // dd($Admin);
+  
     $Admin->update($data);
-    // $Admin->save();
-    
 
-    return redirect()->route('admin.index')->with('success', 'User updated successfully');
+    
+   if(auth()->user()->role == "Student" || auth()->user()->role == "Teacher"  ){
+    return redirect()->to('http://localhost:8000/dashboard')->with('update_success', 'User updated successfully');
+   }
+    return redirect()->route('admin.index')->with('update_success', 'User updated successfully');
 }
 
   
@@ -128,7 +132,7 @@ public function update(Request $request, User $Admin): RedirectResponse
     public function destroy(User $Admin): RedirectResponse
     {
         $Admin->delete();
-         
+        
         return redirect()->route('admin.index')
                         ->with('delete','User deleted successfully');
     }

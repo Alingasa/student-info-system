@@ -9,6 +9,7 @@ use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LayoutController extends Controller
 {
@@ -17,25 +18,21 @@ class LayoutController extends Controller
      */
     public function index()
     {
-        if(Auth::check())
-        {
+     
+
             $totalStudents = Student::count();
             $totalUsers = User::count();
             $totalTeachers = Teacher::count();
+            $totalAdmins = DB::table('users')->where('role', 'Admin')->count();
             $totalPaid = Payment::sum('paid');
             $totalPayable = Payment::sum('payable');
             $totalRefund = Payment::sum('refund');
             $totalFees = Enrollment::sum('fee');
-            // dd($totalPayments);
-            $studenttables = Student::latest()->paginate(50);
-            $enrollments = Enrollment::with(['subject', 'course', 'student', 'teacher'])->get();
+            $studenttables = Student::simplePaginate(5);
+            $enrollments = Enrollment::with(['subject', 'course', 'student', 'teacher'])->simplePaginate(5);
      
-        }
-
-      
-        
-        return view('dashboard.index', compact('totalStudents','totalUsers','totalTeachers','studenttables','enrollments','totalPaid','totalPayable','totalRefund','totalFees'))->with('i', (request()->input('page', 1) - 1) * 5);
-        return redirect()->route('login')->with('error', 'Invalid credentials or unauthorized access.');
+        return view('dashboard.index', compact('totalStudents','totalUsers','totalTeachers','totalAdmins','studenttables','enrollments','totalPaid','totalPayable','totalRefund','totalFees'))->with('i', (request()->input('page', 1) - 1) * 5);
+       
 }
 
     /**

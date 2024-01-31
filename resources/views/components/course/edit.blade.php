@@ -7,14 +7,7 @@
         </div>
     
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+    @include('layout.error')
 @endif
 
 <form action="{{ route('course.update',$course->id) }}" method="POST">
@@ -38,12 +31,8 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <strong for="role">Description</strong>
             <input type="text" name="description" value="{{ $course->description }}" class="form-control" placeholder="Description">
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Duration</strong>
-                <input type="text" name="duration" value="{{ $course->duration }}" class="form-control" placeholder="Duration">
-            </div>
+      <br>
+       
             <button type="submit" class="btn btn-primary btn-sm">Submit</button>  
             <a class="btn btn-danger btn-sm" href="{{ route('course.index') }}">Cancel</a> 
             <div class="form-group">

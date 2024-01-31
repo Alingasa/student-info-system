@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('role')->default('Teacher');
             $table->unsignedBigInteger('user_id');
-            $table->string('teacher_id')->unique();
+            $table->string('teacher_id')->nullable()->unique();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();

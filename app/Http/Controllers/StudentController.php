@@ -57,11 +57,8 @@ foreach ($adminUsers as $admin) {
     }
 }
 
-          if(auth()->user()['role'] != 'Admin' ||auth()->user()['role'] != 'Teacher' ) {
-            $student = Student::latest()->paginate(1);
-        }
-
-        $student = Student::latest()->get();
+       
+        $student = Student::simplePaginate(5);
         return view('components.student.index',compact('student'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

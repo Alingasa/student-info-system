@@ -18,27 +18,21 @@
                     </div>
                 </div>
             </div>
+            <div class="table-responsive">
+                @if($enrollments->count() > 0)
             <div class="card-body p-0">
                 <table class="table table-sm table-hover table-striped mb-0" id="myDataTable">
                    
-                  @if ($message = Session::get('success'))
-                      <div class="alert alert-success">
-                          <p>{{ $message }}</p>
-                      </div>
-                  @endif
-                  @if ($message = Session::get('delete'))
-                  <div class="alert alert-danger">
-                      <p>{{ $message }}</p>
-                  </div>
-              @endif
+                
                   <table class="table table-bordered">
                       <tr>
                           <th>No</th>
                    
-                          <th>Subject</th>
+                           <th>Student ID</th>
                           <th>Course</th>
+                          <th>Year</th>
+                          <th>Semester</th>
                           <th>Student</th>
-                          <th>Teacher</th>
                           <th>Join Date</th>
                           <th>Fee</th>
                           <th width="280px">Action</th>
@@ -48,10 +42,11 @@
                           <td>{{ ++$i }}</td>
                           <!-- Other enrollment fields -->
                      
-                          <td>{{ $enrollment->subject->name }}</td>
+                            <td class="text-danger">{{ $enrollment->student->student_id }}</td>
                           <td>{{ $enrollment->course->name }}</td>
+                          <td>{{ $enrollment->year. ' Year' }}</td>
+                          <td>{{ $enrollment->semester}}</td>
                           <td>{{ $enrollment->student->firstname }} {{ $enrollment->student->lastname }}</td>
-                          <td>{{ $enrollment->teacher->firstname }} {{ $enrollment->teacher->lastname }}</td>
                           <td>{{$enrollment->join_date}}</td>
                           <td>{{$enrollment->fee}}</td>
 
@@ -72,14 +67,20 @@
                       @endforeach
                   </table>
                   </table>
-                  
                   @if(isset($user_name))
-                    <div class="alert alert-success mb-0">
-                      <strong>Success!</strong> {{ $user_name }}'s information has been successfully updated.
-                    </div>
-                  @endif
+                  <div class="alert alert-success mb-0">
+                    <strong>Success!</strong> {{ $user_name }}'s information has been successfully updated.
+                  </div>
+                @endif
+                  @else
+                  <br>
+                  <center>
+                    <h5 class="text-danger">No Available Data</h5>
+                  </center>
+                 @endif
             </div>
           </div>
           @include('components.enrollment.script.scriptjs')
+          @include('layout._footer')
      
 @endsection

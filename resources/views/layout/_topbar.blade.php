@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-{{-- <center><h3 class="head">Student Information Management System</h3></center> --}}
-  <!-- Sidebar Toggle (Topbar) -->
+
  
   <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
       <i class="fa fa-bars"></i>
@@ -53,8 +52,6 @@
               {{-- <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ ucwords(Auth::user()->firstname . ' ' . Auth::user()->lastname) }}</b></span> --}}
               <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ Auth::user()->full_name }}</b></span>
 
-              {{-- <img class="img-profile rounded-circle"
-                  src={{asset("my_dashboard/img/undraw_profile.svg")}}> --}}
                   @if(Auth::user()->avatar)
                   <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Profile Picture" class="img-profile rounded-circle">
               @else

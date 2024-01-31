@@ -14,25 +14,18 @@
                     </div>
                     @if(auth()->user()['role'] == 'Admin' || auth()->user()['role'] == 'Teacher')
                     <div class="col-md-6 col-12 text-right">
-                        <a href="{{ route('course.create') }}" class="btn btn-sm btn-primary">Add New Courses</a>
+                        <a href="{{ route('course.create') }}" class="btn btn-sm btn-primary">Add Course</a>
                     </div>
                     @endif
                 </div>
             </div>
+            
+        <div class="table-responsive">
             <div class="card-body p-0">
-              
+              @if($course->count() > 0 )
                 <table class="table table-sm table-hover table-striped mb-0" id="myDataTable">
                    
-                  @if ($message = Session::get('success'))
-                      <div class="alert alert-success">
-                          <p>{{ $message }}</p>
-                      </div>
-                  @endif
-                  @if ($message = Session::get('delete'))
-                  <div class="alert alert-danger">
-                      <p>{{ $message }}</p>
-                  </div>
-              @endif
+                  
                   <table class="table table-bordered">
                       <tr>
                         @if(auth()->user()['role'] == 'Admin' || auth()->user()['role'] == 'Teacher')
@@ -52,13 +45,13 @@
                           @endif
                           <td>
                             @if( $courses->name == 'BSIT')
-                            <span style="color:orange;"><b>{{ $courses->name }}</b></span>
+                            <span class="text-warning"><b>{{ $courses->name }}</b></span>
                              @elseif( $courses->name == 'BSED-SS')
-                               <span style="color: gray;"><b>{{ $courses->name}}</b></span> 
+                               <span class="text-secondary"><b>{{ $courses->name}}</b></span> 
                             @elseif( $courses->name == 'BSED-MATH')
-                            <span style="color: purple;"><b>{{ $courses->name}}</b></span> 
+                            <span class="text-info"><b>{{ $courses->name}}</b></span> 
                             @else
-                           <span style="color: blue;"><b>{{ $courses->name}}</b> </span> 
+                           <span class="text-primary"><b>{{ $courses->name}}</b> </span> 
                             @endif
                         </td>
                           
@@ -76,7 +69,8 @@
                                   @csrf
                                   @method('DELETE')
                     
-                                  <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                  <a class="btn btn-sm btn-danger" href="#" data-toggle="modal" data-target="#deleteModal_{{ $courses->id }}" >Delete</a>
+                                  @include('components.course.modal.deletemodal', ['courses' => $courses])
                               </form>
                           </td>
                           @endif
@@ -84,14 +78,22 @@
                       @endforeach
                   </table>
                   </table>
-                  
-                  @if(isset($user_name))
-                    <div class="alert alert-success mb-0">
-                      <strong>Success!</strong> {{ $user_name }}'s information has been successfully updated.
-                    </div>
-                  @endif
+                  <nav aria-label="...">
+                    <ul class="pagination">
+                      
+                      {{ $course->links() }}
+                    </ul>
+                  </nav>
+                 
+                 
+                  @else
+                 <center>
+                    <br>
+                    <h5 class="text-danger">No Data Available</h5>
+                 </center>
+                 @endif
             </div>
           </div>
-
+          @include('layout._footer')
     @endsection
     

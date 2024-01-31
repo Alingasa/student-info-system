@@ -42,10 +42,10 @@
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is required">
 				
 						@error('email')
-						<span class="invalid-input100"><strong style="color:red">{{ $message }}</strong></span> <br>
+						<span class="invalid-input100"><strong class="text-danger">{{ $message }}</strong></span> <br>
 					@else
 						@error('password')
-						<span class="invalid-input100"><strong style="color:red">{{ $message }}</strong></span> <br>
+						<span class="invalid-input100"><strong class="text-danger">{{ $message }}</strong></span> <br>
 						@enderror
 						@enderror
 						<span class="label-input100">Email</span>
@@ -53,21 +53,13 @@
                        
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
                         
-                        {{-- @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror --}}
+                   
 					</div>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Password</span>
 						<input id="password" type="password" class="input100 @error('password') is-invalid @enderror"  name="password" required autocomplete="current-password" placeholder="Type your password">
                        
-                        {{-- @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror --}}
+                      
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 
@@ -119,7 +111,7 @@
 		</div>
 	</div>
 	
-
+	
 	<div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
@@ -139,6 +131,7 @@
 <!--===============================================================================================-->
 	<script src="login-form/js/main.js"></script>
 	@include('auth.register')
+
 </body>
 </html>
     

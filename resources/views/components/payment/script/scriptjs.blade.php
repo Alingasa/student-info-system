@@ -3,11 +3,7 @@
     $(document).ready(function () {
         // Toggle search bar visibility based on user count
         var userCount = {{ count($payment) }};
-        if (userCount > 10) {
-            $('#searchBar').show();
-        } else {
-            $('#searchBar').hide();
-        }
+     
 
         // Handle user search
         $('#searchBar').on('input', function () {

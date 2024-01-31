@@ -10,7 +10,7 @@ class Payment extends Model
     protected $table = 'payments';
     protected $primarykey = 'id';
     protected $fillable = [
-        'enrollment_id',
+        'student_id',
        'payable',
        'refund',
        'paid_date',
@@ -18,7 +18,7 @@ class Payment extends Model
    ];
     use HasFactory;
 
-    public function enrollment(){
-        return $this->belongsTo(Enrollment::class);
+    public function student(){
+        return $this->belongsTo(Student::class);
     }
 }

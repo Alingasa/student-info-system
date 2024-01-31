@@ -10,8 +10,10 @@ class Subject extends Model
     protected $table = 'subjects';
     protected $primarykey = 'id';
     protected $fillable = [
-        'name',
+        
          'course_id',
+         'year',
+         'semester',
         'start_date',
     ];
     use HasFactory;
@@ -19,4 +21,5 @@ class Subject extends Model
     {
         return $this->belongsto(Course::class);
     }
+    
 }

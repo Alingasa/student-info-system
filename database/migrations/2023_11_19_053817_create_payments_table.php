@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('enrollment_id')->nullable()->unique();
+            $table->unsignedBigInteger('student_id')->nullable(); 
             $table->string('payable')->nullable();
             $table->string('refund')->nullable();
             $table->date('paid_date');
             $table->double('paid');
-            $table->foreign('enrollment_id')->references('id')->on('enrollments')->onDelete('cascade');
+             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->timestamps();
         });
     }
