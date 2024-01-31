@@ -44,7 +44,7 @@
             <div class="card-header">
              <th>ID :</th>
                       <td>
-                        {{Auth::user()->user_id}}
+                        {{Auth::user()->user_id ?? 'Please refer to admin'}}
                         </td> 
                     </div>
                         
