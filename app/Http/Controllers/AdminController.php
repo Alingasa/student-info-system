@@ -88,7 +88,7 @@ public function update(Request $request, User $Admin): RedirectResponse
     $data = $request->validate([
         'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         'role' => 'required',
-        'user_id' => ['required', 'numeric'],
+        'user_id' => ['required', 'numeric', 'max:5'],
         'firstname' => 'required',
         'lastname' => 'required',
         'email' => 'required',

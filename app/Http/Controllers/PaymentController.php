@@ -46,7 +46,7 @@ class PaymentController extends Controller
         
         Payment::create($request->all());
          
-        return redirect()->route('payment.index')
+        return redirect()->route('payment.print')
                         ->with('success','Payment Added successfully.');
     }
   

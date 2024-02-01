@@ -5,8 +5,6 @@
    
 @include('webpage-layout.bodysection')
   
-
-
 @include('webpage-layout.myprofile')
-
+@include('webpage-layout.integration')
 @include('webpage-layout.footer')
