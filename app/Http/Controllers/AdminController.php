@@ -45,7 +45,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'user_id' =>  ['required', 'numeric'],
+            'user_id' =>  ['required', 'numeric','digits:5'],
             'firstname' => 'required',
             'lastname' => 'required',
             'role' => 'required',
