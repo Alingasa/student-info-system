@@ -41,11 +41,15 @@
             <div class="form-group">
                 <strong for="role">Role</strong>
                 <select  class="form-control" name="role" id="role">
-                    
+                    @if(auth()->user()->role == "Admin")
                     <option value="Admin" {{ ($Admin->role == "Admin") ? 'selected' : ''}}>Admin</option>
                     <option value="Student" {{ ($Admin->role == "Student") ? 'selected' : ''}}>Student</option>
+                    <option value="Teacher" {{ ($Admin->role == "Teacher") ? 'selected' : ''}}>Teacher</option>
+                    @endif
+                    @if(auth()->user()->role == "Student" || auth()->user()->role == "Teacher")
+                    <option value="Student" {{ ($Admin->role == "Student") ? 'selected' : ''}}>Student</option>
                    <option value="Teacher" {{ ($Admin->role == "Teacher") ? 'selected' : ''}}>Teacher</option>
-                
+                @endif
                     
                     </select>
           
