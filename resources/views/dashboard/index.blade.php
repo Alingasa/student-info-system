@@ -4,9 +4,66 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+      @if(auth()->user()->role == 'Student' || auth()->user()->role == "Teacher")
+      
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+<br>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Welcome, {{ auth()->user()->firstname }}!</h6>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+         
+                       
+                                <div class="card-body">
+                
+                                    <!-- Unique Design Section -->
+                                    <div class="text-center">
+                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                            src="my_dashboard/img/undraw_posting_photo.svg" alt="...">
+                                    </div>
+                                    
+                
+                                    <!-- Educational Platform Description Section -->
+                                    <p>At this school, we believe in the transformative power of education. We
+                                        are dedicated to providing an enriching and empowering learning experience that goes beyond
+                                        traditional boundaries. Our commitment is to nurture inquisitive minds, foster creativity, and
+                                        prepare individuals for success in a rapidly evolving world.</p>
+                
+                                        <h5 class="mt-4 mb-3">Key Features:</h5>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check-circle text-success"></i> <strong>Innovative Learning:</strong>
+                                                Embrace a dynamic and innovative approach to education that integrates cutting-edge technology
+                                                with proven pedagogical methods.</li>
+            
+                                            <li><i class="fas fa-check-circle text-success"></i> <strong>Expert Instructors:</strong> Learn
+                                                from passionate and experienced instructors who are dedicated to guiding students toward
+                                                academic excellence and personal growth.</li>
+            
+                                            <!-- Add more list items for other key features -->
+            
+                                        </ul>
+            
+                                        <p class="mt-4">Join us and embark on a journey of discovery, growth, and success!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      @endif
     @if(auth()->user()->role == 'Admin')
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
    
   </div>
   <!-- Generate Report Modal -->
@@ -246,12 +303,14 @@
                   </div>
 
                   
-                  
+                
 @include('dashboard.tables')
     
 
+   
     
 </div>
+
 @endif
 
 
