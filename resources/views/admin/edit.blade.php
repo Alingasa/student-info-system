@@ -57,13 +57,23 @@
        @if(auth()->user()->role == "Student" || auth()->user()->role == "Teacher")
        <div class="form-group">
         <strong>User Id</strong>
-        <input type="text" name="user_id" value="{{ $Admin->user_id }}" class="form-control" placeholder="User Id" readonly>
+        <input type="text" name="user_id" value="{{ $Admin->user_id }}" class="form-control @error('user_id') is-invalid @enderror" placeholder="User Id" readonly>
+        @error('user_id')
+        <span class="invalid-feedback" role="alert">
+            <strong><p>Please Refer to the Admin</p></strong>
+        </span>
+    @enderror
     </div>
 </div>
        @else
         <div class="form-group">
             <strong>User Id</strong>
-            <input type="text" name="user_id" value="{{ $Admin->user_id }}" class="form-control" placeholder="User Id">
+            <input type="text" name="user_id" value="{{ $Admin->user_id }}" class="form-control @error('user_id') is-invalid @enderror" placeholder="User Id">
+            @error('user_id')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
         </div>
        
     </div>
@@ -71,20 +81,35 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>First Name</strong>
-                <input type="text" name="firstname" value="{{ $Admin->firstname }}" class="form-control" placeholder="First Name">
+                <input type="text" name="firstname" value="{{ $Admin->firstname }}" class="form-control @error('firstname') is-invalid @enderror" placeholder="First Name">
+                @error('firstname')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Last Name</strong>
-                <input type="text" name="lastname" value="{{ $Admin->lastname }}" class="form-control" placeholder="Last Name">
+                <input type="text" name="lastname" value="{{ $Admin->lastname }}" class="form-control @error('lastname') is-invalid @enderror" placeholder="Last Name">
+                @error('lastname')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
         </div>
       
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email</strong>
-                <input type="text" name="email" value="{{ $Admin->email }}" class="form-control" placeholder="Email">
+                <input type="text" name="email" value="{{ $Admin->email }}" class="form-control @error('email') is-invalid @enderror" placeholder="Email">
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
             <div class="form-group">
                 <strong for="status">Status</strong>

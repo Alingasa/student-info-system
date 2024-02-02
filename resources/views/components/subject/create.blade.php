@@ -59,7 +59,12 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Started Date</strong>
-            <input type="date"  name="start_date" class="form-control" placeholder="Started Date">
+            <input type="date"  name="start_date" class="form-control @error('start_date') is-invalid @enderror" placeholder="Started Date">
+            @error('start_date')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
         </div>
      
      

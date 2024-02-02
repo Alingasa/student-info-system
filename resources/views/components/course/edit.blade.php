@@ -30,7 +30,12 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <strong for="role">Description</strong>
-            <input type="text" name="description" value="{{ $course->description }}" class="form-control" placeholder="Description">
+            <input type="text" name="description" value="{{ $course->description }}" class="form-control @error('description') is-invalid @enderror" placeholder="Description">
+            @error('description')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
       <br>
        
             <button type="submit" class="btn btn-primary btn-sm">Submit</button>  

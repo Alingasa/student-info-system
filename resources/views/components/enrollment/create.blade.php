@@ -72,13 +72,23 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Enrolled Date</strong>
-                        <input type="date" name="join_date" class="form-control" placeholder="Enrolled Date">
+                        <input type="date" name="join_date" class="form-control @error('join_date') is-invalid @enderror" placeholder="Enrolled Date">
+                        @error('join_date')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
                     </div>
                     </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong> Fee</strong>
-                        <input type="text" name="fee" class="form-control" placeholder="Fee">
+                        <input type="text" name="fee" class="form-control @error('fee') is-invalid @enderror" placeholder="Fee">
+                        @error('fee')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                   
         

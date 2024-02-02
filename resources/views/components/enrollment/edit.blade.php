@@ -66,14 +66,24 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="join_date">Enrolled Date</label>
-                        <input type="date" name="join_date" class="form-control" value="{{ $enrollment->join_date }}">
+                        <input type="date" name="join_date" class="form-control @error('join_date') is-invalid @enderror" value="{{ $enrollment->join_date }}">
+                        @error('join_date')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="fee">Fee</label>
-                        <input type="text" name="fee" class="form-control" value="{{ $enrollment->fee }}">
+                        <input type="text" name="fee" class="form-control @error('fee') is-invalid @enderror" value="{{ $enrollment->fee }}">
+                        @error('fee')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                 </div>
 

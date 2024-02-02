@@ -8,15 +8,8 @@
     </div>
 
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+    @include('layout.error')
+    @endif
 
 
     <form action="{{ route('payment.update', $payment->id) }}" method="POST">
@@ -42,28 +35,48 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="payable">Payable</label>
-                        <input type="text" name="payable" class="form-control" value="{{ $payment->payable }}">
+                        <input type="text" name="payable" class="form-control @error('payable') is-invalid @enderror" value="{{ $payment->payable }}">
+                        @error('payable')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="refund">Refund</label>
-                        <input type="text" name="refund" class="form-control" value="{{ $payment->refund }}">
+                        <input type="text" name="refund" class="form-control @error('refund') is-invalid @enderror" value="{{ $payment->refund }}">
+                        @error('refund')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="paid_date">Paid Date</label>
-                        <input type="date" name="paid_date" class="form-control" value="{{ $payment->paid_date }}">
+                        <input type="date" name="paid_date" class="form-control @error('paid_date') is-invalid @enderror" value="{{ $payment->paid_date }}">
+                        @error('paid_date')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="paid">Paid</label>
-                        <input type="text" name="paid" class="form-control" value="{{ $payment->paid }}">
+                        <input type="text" name="paid" class="form-control @error('paid') is-invalid @enderror" value="{{ $payment->paid }}">
+                        @error('paid')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                 </div>
 
